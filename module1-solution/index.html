@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="LunchCheck">
+<head>
+    <title></title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{
+            background-color:aquamarine;
+        }
+        #comment{
+            height: 100px;
+            width: 400px;
+        }
+        .lunchForm{
+            margin:60px 160px;
+        }
+        .lunchForm button{
+            margin:10px 0;
+        }
+		
+    </style>
+
+    
+</head>
+
+<body>
+    <h1 class="text-center">Module 1 solution</h1>
+	<p class="text-center "><i>The job is done with additional tasks.</i></p>
+    <div class="form-group lunchForm" ng-controller="LunchCheckController">
+        <label for="comment">What do you want to it for lunc?</label>
+        <textarea class="form-control" rows="5" id="comment" ng-model="items"></textarea>
+        <button type="button" class="btn btn-info" ng-click="subm(items)">Check If Too Much</button>
+        <p ng-style="propertyColor">{{property}}</p>
+    </div>
+	
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
