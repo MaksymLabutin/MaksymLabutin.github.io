@@ -40,17 +40,17 @@
        <button ng-click="listToBuy.Bought($index);" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button>
      </li>
     </ul>
-    <div class="text-error"> {{listToBuy.errorMessage}} </div>
-     <div class="emptyMessage">Everything is bought!</div>
+     <div class="emptyMessage" ng-if="listToBuy.itemsToBuy.length === 0">Everything is bought!</div>
     </div>
 
     <!-- Already Bought List -->
     <div class="col-md-6" ng-controller="AlreadyBoughtController as listAlreadyBought">
      <h2>Already Bought:</h2>
      <ul>
-       <li ng-repeat="bought in listAlreadyBought.getBoughtItems">Buy {{bought.quantity}} {{bought.name}}.</li>
-     </ul>
-     <div ng-if="listAlreadyBought.emptyMessage" class="emptyMessage">{{listAlreadyBought.emptyMessage}}</div>
+       <li ng-repeat="bought in listAlreadyBought.boughtItems">Buy {{bought.quantity}} {{bought.name}}.</li>
+       <div class="emptyMessage" ng-if="listAlreadyBought.boughtItemLength.length === 0"> Nothing bought yet <div>
+
+    </ul>
     </div>
   </div>
 </div>

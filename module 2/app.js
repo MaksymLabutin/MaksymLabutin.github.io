@@ -8,39 +8,40 @@ angular.module('ShoppingListCheckOff', [])
 
 
 // Первый контроллер
-ShoppingListToBuyController.$inject = ['ShoppingListService'];
-function ShoppingListToBuyController(ShoppingListCheckOffService) {
+ShoppingListToBuyController.$inject = ['$scope','ShoppingListService'];
+function ShoppingListToBuyController($scope,ShoppingListCheckOffService) {
   var listToBuy = this;
 
-  listToBuy.itemsToBuy = ShoppingListCheckOffService.getItems();
+  listToBuy.itemsToBuy =  ShoppingListCheckOffService.getItems();
+
   listToBuy.itemName ="";
   listToBuy.quantity ="";
   listToBuy.items = ShoppingListCheckOffService.items;
   listToBuy.addItem = function () {
-    try {
           ShoppingListCheckOffService.addItem(listToBuy.itemName , listToBuy.quantity );
-    } catch (error) {
-      listToBuy.errorMessage = error.message;
-    }
   };
-  listToBuy.Bought = function (itemIndex) {
-    ShoppingListCheckOffService.boughtItem(itemIndex);
+  listToBuy.Bought = function (itemIndex){
+      ShoppingListCheckOffService.boughtItem(itemIndex);
+      // $scope.$digest();
   };
+
 
 };
 
 // Второй контроллер
-ShoppingListAlreadyBoughtController.$inject = ['ShoppingListService'];
-function ShoppingListAlreadyBoughtController(ShoppingListCheckOffService) {
+ShoppingListAlreadyBoughtController.$inject = ['$scope', 'ShoppingListService'];
+function ShoppingListAlreadyBoughtController($scope,ShoppingListCheckOffService) {
    var listAlreadyBought = this;
-   listAlreadyBought.boughtItems = ShoppingListCheckOffService.boughtItems;
-   try
-   {
-     listAlreadyBought.getBoughtItems = ShoppingListCheckOffService.getBoughtItems();
-   }
-   catch(error){
-     listAlreadyBought.emptyMessage = error.message;
-   }
+     listAlreadyBought.boughtItems = ShoppingListCheckOffService.getBoughtItems();
+     listAlreadyBought.boughtItemLength = ShoppingListCheckOffService.getBoughtItemLength();
+    //  $scope.$watch('listAlreadyBought.boughtItems', function () {
+    //    console.log("Text", ShoppingListCheckOffService.getBoughtItems().length, );
+     //
+    //  }, true);
+    //  $scope.$watch('listAlreadyBought.boughtItems', function () {
+    //    console.log("x", ShoppingListCheckOffService.getBoughtItemX().length, );
+     //
+    //  }, true);
 };
 
 //service
@@ -52,7 +53,7 @@ function ShoppingListCheckOffService() {
                {name: 'Chips',   quantity: 3},
                {name: 'Chips',   quantity: 4},
                {name: 'Chips',   quantity: 5}];
-var boughtItems = [];
+  var boughtItems = [];
   service.addItem = function (itemName, quantity) {
 
       var item = {
@@ -60,31 +61,29 @@ var boughtItems = [];
       quantity: quantity
     };
     items.push(item);
-    // else {
-    //   throw new Error("Your list is empty! Add some items...");
-    // }
   };
-service.boughtItem = function (indexItem) {
-boughtItems.push(items[indexItem]);
-  items.splice(indexItem, 1);
-};
+  service.boughtItem = function (indexItem) {
+    var item = {
+      name : items[indexItem].name,
+      quantity:  items[indexItem].quantity
+    };
+   boughtItems.push(item);
+   items.splice(indexItem, 1);
+  };
 
   service.getItems = function () {
     return items;
   };
- service.check = function () {
-var tmp = getBoughtItems();
-   if(tmp === undefine){
-     throw new Error("Empty!")
-   }
-   else {
-     return tmp;
-   }
- };
+
   service.getBoughtItems = function () {
+
    return boughtItems;
    };
 
+   service.getBoughtItemLength = function () {
+    var lengthArr = boughtItems;
+    return  lengthArr;
+    };
 };
 
 })();
