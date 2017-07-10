@@ -1,0 +1,15 @@
+
+<table class="table-bordered">
+  <tr>
+    <td>Name</td>
+    <td>Short Name</td>
+    <td>Description</td>
+    <td>Edit</td>
+  </tr>
+      <tr ng-repeat="item in items.AllItems">
+          <td>{{item.name}} </td>
+          <td>{{item.short_name}}</td>
+          <td>{{item.description}}</td>
+          <td>  <button ng-click="items.onRemove({index:  $index});">Don't want this one!</button></td>
+      </tr>
+</table>
