@@ -1,0 +1,16 @@
+
+<h3 class="text-center">Items</h3>
+
+<a ui-sref="categories" class="itemGo">Go back</a>
+<table class="table table-bordered table-striped items">
+  <tr>
+    <td>ID</td>
+    <td>Name</td>
+    <td>Description</td>
+  </tr>
+  <tr ng-repeat="item in $ctrl.items">
+    <td >{{item.id}}</td>
+    <td >{{item.name}}</td>
+    <td >{{item.description}}</td>
+  </tr>
+</table>
