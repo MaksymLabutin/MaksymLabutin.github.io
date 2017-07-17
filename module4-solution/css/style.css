@@ -1,0 +1,19 @@
+.main-contant{
+  margin-top: 250px;
+}
+.navbar{
+  display: inline-block;
+  margin: 25px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  color: blue;
+
+}
+.activeNavItem{
+  color: green;
+  font-size: 17px;
+}
+
+ tr,td{
+  padding: 20px !important;
+}
