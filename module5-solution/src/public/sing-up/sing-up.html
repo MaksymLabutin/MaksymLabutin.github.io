@@ -1,0 +1,55 @@
+<div class="container">
+  <fieldset >
+    <form name="singUpForm" class="col-md-4 col-sm-6 col-xs-12" novalidate>
+      <div class="form-group ">
+        <label for="firstName">First Name:</label>
+        <input type="text"
+               class="form-control"
+               name="firstName"
+               placeholder="Vasya"
+               required minlength="2"
+               ng-model="form.user.name">
+
+      </div>
+      <span class="text-warning" ng-if="(singUpForm.firstName.$error.minlength || singUpForm.firstName.requered) && singUpForm.firstName.$touched">  Username must be at least 2 characters long *</span>
+
+      <div class="form-group ">
+        <label for="lastName">Last Name:</label>
+        <input type="text"
+               class="form-control"
+               name="lastName"
+               placeholder="Pupkin"
+               required minlength="2"
+               ng-model="form.user.lastName">
+      </div>
+      <span class="text-warning" ng-if="(singUpForm.lastName.$error.minlength || singUpForm.lastName.requered) && singUpForm.lastName.$touched">  Lasr name must be at least 2 characters long *</span>
+
+      <div class="form-group ">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" name="email" placeholder="example@gmail.com" ng-model="form.user.email">
+      </div>
+      <span class="text-warning" ng-if=" singUpForm.email.$invalid  && singUpForm.email.$touched">  Email must be like example@gmail *</span>
+
+      <div class="form-group">
+        <label for="tel">Phone number:</label>
+        <input type="tel"
+               pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
+               placeholder="###-###-###" class="form-control"
+               name="tel"
+               ng-model="form.user.tel">
+      </div>
+      <span class="text-warning" ng-if=" singUpForm.tel.$invalid  && singUpForm.tel.$touched">  Phone number must be in the format ###-###-#### *</span>
+
+      <favorite-dish  favor-dish='form.favoriteDish'></favorite-dish>
+
+      <button type="submit"
+              class="btn btn-primary"
+              ng-disabled = "singUpForm.$invalid"
+              ng-click="form.submit()">Submit
+
+      </button>
+    </form>
+  </fieldset>
+
+
+</div>
