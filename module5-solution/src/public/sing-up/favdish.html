@@ -1,8 +1,7 @@
 
 <div class="form-group">
   <label for="disabledSelect">Disabled select menu</label>
-  <select name="disabledSelect" class="form-control" required >
-    <option  ng-repeat="dish in $ctrl.favorDish  " >{{dish.name}}</option>
+  <select name="disabledSelect" class="form-control" required ng-model="$ctrl.user">
+    <option  ng-repeat="dish in $ctrl.favorDish" value="{{dish.short_name}}" >{{dish.name}}</option>
   </select>
-
 </div>

@@ -31,7 +31,7 @@
       <span class="text-warning" ng-if=" singUpForm.email.$invalid  && singUpForm.email.$touched">  Email must be like example@gmail *</span>
 
       <div class="form-group">
-        <label for="tel">Phone number:</label>
+        <label for="tel">Phone number: 111-111-111</label>
         <input type="tel"
                pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
                placeholder="###-###-###" class="form-control"
@@ -40,15 +40,28 @@
       </div>
       <span class="text-warning" ng-if=" singUpForm.tel.$invalid  && singUpForm.tel.$touched">  Phone number must be in the format ###-###-#### *</span>
 
+
+
       <favorite-dish  favor-dish='form.favoriteDish'></favorite-dish>
 
+      <a ui-sref="public.signUp({category: $ctrl.category.short_name})">
       <button type="submit"
               class="btn btn-primary"
               ng-disabled = "singUpForm.$invalid"
               ng-click="form.submit()">Submit
 
       </button>
+      </a>
     </form>
+
+    <div>
+      <p>Name: {{form.user.name}}</p>
+      <p>Last Name: {{form.user.lastName}}</p>
+      <p>Email: {{form.user.email}}</p>
+      <p>Phone number: {{form.user.tel}}</p>
+      <p>Favorite dish: {{form.useR}}</p>
+      <p>User: {{form.user}}</p>
+    </div>
   </fieldset>
 
 
