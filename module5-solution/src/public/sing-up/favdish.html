@@ -1,7 +1,7 @@
 
 <div class="form-group">
   <label for="disabledSelect">Disabled select menu</label>
-  <select name="disabledSelect" class="form-control" required ng-model="$ctrl.user">
+  <select   name="disabledSelect" class="form-control"  ng-model="$ctrl.dish" required>
     <option  ng-repeat="dish in $ctrl.favorDish" value="{{dish.short_name}}" >{{dish.name}}</option>
   </select>
 </div>

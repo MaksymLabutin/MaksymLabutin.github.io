@@ -42,25 +42,24 @@
 
 
 
-      <favorite-dish  favor-dish='form.favoriteDish'></favorite-dish>
+      <favorite-dish  favor-dish='form.favoriteDish' dish="form.user.favordish"></favorite-dish>
 
-      <a ui-sref="public.signUp({category: $ctrl.category.short_name})">
       <button type="submit"
               class="btn btn-primary"
               ng-disabled = "singUpForm.$invalid"
-              ng-click="form.submit()">Submit
+              ng-click="form.submit()"
+              ui-sref="public.menuitems({category: form.user.favordish})">Submit
 
       </button>
-      </a>
+      <h3 class="text-success" ng-if="form.regUser !== null">Your information has been saved</h3>
     </form>
 
     <div>
-      <p>Name: {{form.user.name}}</p>
-      <p>Last Name: {{form.user.lastName}}</p>
-      <p>Email: {{form.user.email}}</p>
-      <p>Phone number: {{form.user.tel}}</p>
-      <p>Favorite dish: {{form.useR}}</p>
-      <p>User: {{form.user}}</p>
+      <p>Your name: {{form.user.name}}</p>
+      <p>Your Last Name: {{form.user.lastName}}</p>
+      <p>Your Email: {{form.user.email}}</p>
+      <p>Your Phone number: {{form.user.tel}}</p>
+      <p>Your Favorite dish: {{form.user.favordish}}</p>
     </div>
   </fieldset>
 

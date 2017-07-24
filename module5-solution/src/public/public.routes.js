@@ -42,17 +42,24 @@ function routeConfig ($stateProvider) {
       }
     })
     .state('public.signUp', {
-      url: '/sing-up/{category}',
+      url: '/sing-up',
       templateUrl: 'src/public/sing-up/sing-up.html',
       controller: 'SingUpController',
       controllerAs: 'form',
       resolve: {
         favDish: ['MenuService', function (MenuService) {
           return MenuService.getCategories();
-        }],
-        menuItems: ['$stateParams','MenuService', function ($stateParams, MenuService) {
-          return MenuService.getMenuItems($stateParams.category);
         }]
+      }
+    })
+    .state('public.account', {
+      url: '/accout',
+      templateUrl: 'src/public/account/account.html',
+      controller: 'AccountpController',
+      controllerAs: '$ctrl',
+      resolve: {
+        accountInformation: ['MenuService', function (MenuService) {
+          return MenuService.getUser() }]
       }
     });
 }
