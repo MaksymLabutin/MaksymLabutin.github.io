@@ -40,7 +40,7 @@ function MenuService($http, ApiPath) {
         LastName : LastName,
         email: email,
         phoneNumber: phoneNumber,
-        favoriteDish: favoriteDish
+        favoriteDish: service.getMenuItem(favoriteDish)
       }
       users.push(user);
   }

@@ -2,7 +2,20 @@
 <div  ng-repeat="item in $ctrl.account">
   <p>Name: {{item.firstName}}</p>
   <p>Last name: {{item.LastName}}</p>
-  <p>Favorite dish:  {{item.favoriteDish}}</p>
+  <p>Favorite dish:</p>
+  
+    <div  class="row">
+
+      <div class="menu-item-photo col-md-4">
+        <div>{{item.favoriteDish.$$state.value.short_name}}</div>
+        <img class="img-responsive" width="250" height="150" ng-src="https://maksymlabutin.herokuapp.com/images/{{item.favoriteDish.$$state.value.short_name}}.jpg" alt="{{item.favoriteDish.$$state.value.name}}">
+      </div>
+
+    <div class="menu-item-description col-md-8">
+      <h3 class="menu-item-title">{{item.favoriteDish.$$state.value.name}}</h3>
+      <p class="menu-item-details">{{item.favoriteDish.$$state.value.description}}</p>
+    </div>
+  </div>
   <p>Phone number: {{item.phoneNumber}}</p>
   <p>Email: {{item.email}}</p>
 </div>

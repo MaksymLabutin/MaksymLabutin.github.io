@@ -92,6 +92,7 @@
   margin-left: auto;
   margin-bottom: 20px;
   max-width: 250px;
+  display: inline-block !important;
 }
 .menu-item-photo div {
   position: absolute;
@@ -102,6 +103,7 @@
   text-align: center;
 }
 .menu-item-description {
+  display: inline-block !important;
   padding-right: 30px;
 }
 h3.menu-item-title {
