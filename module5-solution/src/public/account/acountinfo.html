@@ -1,7 +1,8 @@
+<h4 ng-if="$ctrl.account.length === 0">Not Signed Up Yet. <a ui-sref="public.signUp">Sign up</a> Now!</h4>
 <div  ng-repeat="item in $ctrl.account">
-  <p>{{item.LastName}}</p>
-  <p>{{item.favoriteDish}}</p>
-  <p>{{item.firstName}}</p>
-  <p>{{item.phoneNumber}}</p>
-  <p>{{item.email}}</p>
+  <p>Name: {{item.firstName}}</p>
+  <p>Last name: {{item.LastName}}</p>
+  <p>Favorite dish:  {{item.favoriteDish}}</p>
+  <p>Phone number: {{item.phoneNumber}}</p>
+  <p>Email: {{item.email}}</p>
 </div>

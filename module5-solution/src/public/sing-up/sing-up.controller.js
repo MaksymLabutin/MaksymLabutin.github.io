@@ -5,14 +5,13 @@
     .controller('SingUpController', SingUpController);
 
 
-    SingUpController.$inject = ['favDish', 'MenuService'];
-    function SingUpController(favDish, MenuService) {
+    SingUpController.$inject = [ 'favDish', 'MenuService'];
+    function SingUpController( favDish, MenuService) {
       var $ctrl = this;
       $ctrl.regUser = null;
-      $ctrl.favoriteDish =  favDish;
+      $ctrl.favoriteDish =  favDish.menu_items;    
 
-      console.log("$ctrl.favoriteDish :" + $ctrl.favoriteDish);
-      console.log( $ctrl.favoriteDish);
+      console.log($ctrl.favoriteDish);
       $ctrl.user = {};
       $ctrl.submit = function () {
           console.log($ctrl.regUser);

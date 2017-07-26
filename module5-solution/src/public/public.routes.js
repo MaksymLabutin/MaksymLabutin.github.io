@@ -41,6 +41,17 @@ function routeConfig ($stateProvider) {
         }]
       }
     })
+    .state('public.menuitem', {
+      url: '/register/{category}',
+      templateUrl: 'src/public/chosenDish/chosendish.html',
+      controller: 'ChosenDishController',
+      controllerAs: '$ctrl',
+      resolve: {
+        choosenDish: ['$stateParams','MenuService', function ($stateParams, MenuService) {
+          return MenuService.getMenuItem($stateParams.category);
+        }]
+      }
+    })
     .state('public.signUp', {
       url: '/sing-up',
       templateUrl: 'src/public/sing-up/sing-up.html',
@@ -48,12 +59,12 @@ function routeConfig ($stateProvider) {
       controllerAs: 'form',
       resolve: {
         favDish: ['MenuService', function (MenuService) {
-          return MenuService.getCategories();
+          return MenuService.getMenuItems();
         }]
       }
     })
     .state('public.account', {
-      url: '/accout',
+      url: '/accout/{favordish}',
       templateUrl: 'src/public/account/account.html',
       controller: 'AccountpController',
       controllerAs: '$ctrl',
